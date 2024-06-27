@@ -1,6 +1,6 @@
 Rian Salin - JAVASCRIPT inicial
 Davi Resende - JAVASCRIPT Atualizado com Local Storage para placar, botões responsivos e funcionalidade para elencar os vencedores.
-
+Leonardo Sena - JAVASCRIPT atualizado, inclui o login e usuario 
 document.addEventListener('DOMContentLoaded', () => {
     class Jogador {
         constructor(nome, simbolo) {
@@ -116,8 +116,26 @@ document.addEventListener('DOMContentLoaded', () => {
             this.updateDisplay();
             this.currentPlayerDisplay.textContent = ''; // Limpa o texto de vencedor/empate
         }
+        
     }
+ // Adicionando funcionalidade de login
+  document.getElementById("startGameBtn").addEventListener("click", () => {
+    const jogador1Nome =
+      document.getElementById("player1Input").value || "Jogador 1";
+    const jogador2Nome =
+      document.getElementById("player2Input").value || "Jogador 2";
 
-    new JogoDaVelha();
+    document.querySelector("main").style.display = "block";
+    document.getElementById("loginContainer").style.display = "none";
+
+    const jogo = new JogoDaVelha();
+    jogo.jogadores[0].nome = jogador1Nome;
+    jogo.jogadores[1].nome = jogador2Nome;
+    jogo.updatePlacar();
+  });
+
+  new JogoDaVelha();
 });
+
+
 
